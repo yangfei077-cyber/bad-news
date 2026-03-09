@@ -23,17 +23,29 @@ async function StatsBar() {
   ]);
 
   return (
-    <div className="flex items-center gap-6 py-4 text-xs font-mono text-muted">
-      <span>
-        <span className="text-foreground font-bold">{total}</span> articles
-      </span>
-      <span>
-        <span className="text-foreground font-bold">{analyzed}</span> analyzed
-      </span>
-      <span>
-        <span className="text-accent font-bold">{total - analyzed}</span>{" "}
-        pending
-      </span>
+    <div className="flex items-center gap-8 mb-6">
+      <div className="text-center">
+        <p className="text-[10px] font-mono uppercase tracking-widest text-muted">
+          Total Articles
+        </p>
+        <p className="text-2xl font-serif font-bold text-foreground">{total}</p>
+      </div>
+      <div className="text-center">
+        <p className="text-[10px] font-mono uppercase tracking-widest text-muted">
+          Analyzed
+        </p>
+        <p className="text-2xl font-serif font-bold text-foreground">
+          {analyzed}
+        </p>
+      </div>
+      <div className="text-center">
+        <p className="text-[10px] font-mono uppercase tracking-widest text-muted">
+          Pending
+        </p>
+        <p className="text-2xl font-serif font-bold text-accent">
+          {total - analyzed}
+        </p>
+      </div>
     </div>
   );
 }
@@ -57,8 +69,8 @@ async function ArticleFeed({
   if (searchParams.language) where.language = searchParams.language;
   if (searchParams.search) {
     where.OR = [
-      { title: { contains: searchParams.search } },
-      { content: { contains: searchParams.search } },
+      { title: { contains: searchParams.search, mode: "insensitive" } },
+      { content: { contains: searchParams.search, mode: "insensitive" } },
     ];
   }
 
@@ -99,8 +111,8 @@ async function ArticleFeed({
   if (articles.length === 0) {
     return (
       <div className="text-center py-20">
-        <p className="text-muted font-mono text-sm">No articles found.</p>
-        <p className="text-muted/60 font-mono text-xs mt-2">
+        <p className="text-muted text-sm">No articles found.</p>
+        <p className="text-muted-light text-xs mt-2">
           Run the scraper to populate the database.
         </p>
       </div>
@@ -109,7 +121,7 @@ async function ArticleFeed({
 
   return (
     <div>
-      <div className="grid gap-4">
+      <div className="space-y-4">
         {articles.map((article) => (
           <ArticleCard
             key={article.id}
@@ -125,24 +137,24 @@ async function ArticleFeed({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className="flex items-center justify-center gap-3 mt-10">
           {page > 1 && (
             <Link
               href={`/?page=${page - 1}`}
-              className="px-4 py-2 text-xs font-mono border border-border rounded hover:border-accent transition-colors"
+              className="px-4 py-2 text-xs font-mono border border-border rounded-full bg-white hover:border-accent hover:text-accent transition-colors"
             >
-              Previous
+              &larr; Previous
             </Link>
           )}
-          <span className="text-xs font-mono text-muted px-4">
-            {page} / {totalPages}
+          <span className="text-xs font-mono text-muted px-3">
+            Page {page} of {totalPages}
           </span>
           {page < totalPages && (
             <Link
               href={`/?page=${page + 1}`}
-              className="px-4 py-2 text-xs font-mono border border-border rounded hover:border-accent transition-colors"
+              className="px-4 py-2 text-xs font-mono border border-border rounded-full bg-white hover:border-accent hover:text-accent transition-colors"
             >
-              Next
+              Next &rarr;
             </Link>
           )}
         </div>
@@ -157,10 +169,21 @@ export default async function HomePage({ searchParams }: PageProps) {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">
+        <h1 className="font-serif text-4xl font-bold tracking-tight mb-3 text-foreground">
           Violence Architecture
         </h1>
-        <p className="text-muted text-sm max-w-2xl">
+        <p className="text-muted text-xs mb-2">
+          Based on Essay:{" "}
+          <a
+            href="https://xj2vrrpw4b9pyznc.public.blob.vercel-storage.com/primal%20race.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            The Primal Race and the Architecture of Violence
+          </a>
+        </p>
+        <p className="text-muted text-sm leading-relaxed max-w-xl">
           Gender violence news analyzed through the Primal Race Theory and
           Galtung&apos;s Violence Triangle framework. Each article is processed
           by a fine-tuned model to surface direct, structural, cultural,
@@ -181,7 +204,7 @@ export default async function HomePage({ searchParams }: PageProps) {
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className="border border-border rounded-lg p-5 bg-card animate-pulse h-32"
+                  className="border border-border rounded-2xl p-6 bg-card animate-pulse h-36"
                 />
               ))}
             </div>

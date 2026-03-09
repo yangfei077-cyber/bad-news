@@ -34,20 +34,21 @@ export default async function ArticlePage({ params }: PageProps) {
     : [];
 
   return (
-    <div>
+    <div className="pb-12">
       <Link
         href="/"
-        className="inline-flex items-center gap-1 text-xs font-mono text-muted hover:text-accent transition-colors mb-6"
+        className="inline-flex items-center gap-1.5 text-xs font-mono text-muted hover:text-accent transition-colors mb-8"
       >
         &larr; Back to feed
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Article Content - Left 2/3 */}
         <div className="lg:col-span-2">
-          <div className="mb-4 flex items-center gap-2 text-xs font-mono text-muted">
-            <span className="text-accent">{article.source.name}</span>
-            <span>·</span>
+          <div className="mb-3 flex items-center gap-2 text-[11px] font-mono uppercase tracking-wide text-muted">
+            <span className="text-accent font-semibold">
+              {article.source.name}
+            </span>
+            <span className="text-border">&middot;</span>
             <span>
               {article.publishedAt
                 ? new Date(article.publishedAt).toLocaleDateString("en-US", {
@@ -57,11 +58,11 @@ export default async function ArticlePage({ params }: PageProps) {
                   })
                 : "Date unknown"}
             </span>
-            <span>·</span>
-            <span className="uppercase">{article.language}</span>
+            <span className="text-border">&middot;</span>
+            <span>{article.language}</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold leading-tight mb-4">
+          <h1 className="font-serif text-3xl font-bold leading-tight mb-4 text-foreground">
             {article.title}
           </h1>
 
@@ -78,13 +79,14 @@ export default async function ArticlePage({ params }: PageProps) {
           )}
 
           <div className="border-t border-border pt-6">
-            <div className="prose prose-invert prose-sm max-w-none">
-              {article.content.split("\n\n").map((paragraph, i) => (
-                <p key={i} className="text-sm leading-relaxed text-foreground/80 mb-4">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            {article.content.split("\n\n").map((paragraph, i) => (
+              <p
+                key={i}
+                className="text-[15px] leading-relaxed text-foreground/80 mb-4"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="mt-8 pt-4 border-t border-border">
@@ -92,24 +94,21 @@ export default async function ArticlePage({ params }: PageProps) {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-mono text-accent hover:underline"
+              className="inline-flex items-center gap-1 text-xs font-mono text-accent hover:underline"
             >
               View original article &rarr;
             </a>
           </div>
         </div>
 
-        {/* Analysis Panel - Right 1/3 */}
         <div className="lg:col-span-1">
-          <div className="sticky top-24 bg-card border border-border rounded-lg p-5">
+          <div className="sticky top-24 bg-card border border-border rounded-2xl p-6">
             {article.analysis ? (
               <AnalysisPanel analysis={article.analysis} />
             ) : (
-              <div className="text-center py-8">
-                <p className="text-muted font-mono text-sm">
-                  Analysis pending
-                </p>
-                <p className="text-muted/60 font-mono text-xs mt-2">
+              <div className="text-center py-10">
+                <p className="text-muted text-sm">Analysis pending</p>
+                <p className="text-muted-light text-xs mt-2">
                   This article has not been analyzed yet.
                 </p>
               </div>

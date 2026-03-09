@@ -1,18 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e5e5e5;
-  --card: #141414;
-  --card-hover: #1a1a1a;
-  --border: #262626;
-  --accent: #dc2626;
+  --background: #faf9f7;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-hover: #f5f3f0;
+  --border: #e5e2dc;
+  --accent: #b91c1c;
+  --accent-light: #fef2f2;
   --accent-muted: #991b1b;
-  --muted: #737373;
-  --severity-low: #22c55e;
-  --severity-mid: #eab308;
-  --severity-high: #ef4444;
-  --severity-critical: #dc2626;
+  --muted: #78716c;
+  --muted-light: #a8a29e;
+  --severity-low: #16a34a;
+  --severity-mid: #ca8a04;
+  --severity-high: #dc2626;
+  --severity-critical: #991b1b;
+  --font-serif: 'Playfair Display', 'Source Serif 4', 'Georgia', serif;
 }
 
 @theme inline {
@@ -22,10 +26,13 @@
   --color-card-hover: var(--card-hover);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-accent-muted: var(--accent-muted);
   --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
 }
 
 body {
@@ -37,6 +44,10 @@ body {
 ::selection {
   background: var(--accent);
   color: white;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
 }
 
 .galtung-triangle {

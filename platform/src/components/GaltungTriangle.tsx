@@ -24,9 +24,8 @@ export function GaltungTriangle({
   const bottomRightX = size - pad;
   const bottomRightY = h - pad;
 
-  const activeColor = "#dc2626";
-  const inactiveColor = "#333";
-  const activeGlow = "drop-shadow(0 0 6px rgba(220, 38, 38, 0.6))";
+  const activeColor = "#b91c1c";
+  const inactiveColor = "#d6d3d1";
 
   return (
     <svg
@@ -41,8 +40,8 @@ export function GaltungTriangle({
         x2={bottomLeftX}
         y2={bottomLeftY}
         stroke={direct || cultural ? activeColor : inactiveColor}
-        strokeWidth={2}
-        opacity={0.4}
+        strokeWidth={1.5}
+        opacity={0.5}
       />
       <line
         x1={topX}
@@ -50,8 +49,8 @@ export function GaltungTriangle({
         x2={bottomRightX}
         y2={bottomRightY}
         stroke={direct || structural ? activeColor : inactiveColor}
-        strokeWidth={2}
-        opacity={0.4}
+        strokeWidth={1.5}
+        opacity={0.5}
       />
       <line
         x1={bottomLeftX}
@@ -59,63 +58,57 @@ export function GaltungTriangle({
         x2={bottomRightX}
         y2={bottomRightY}
         stroke={cultural || structural ? activeColor : inactiveColor}
-        strokeWidth={2}
-        opacity={0.4}
+        strokeWidth={1.5}
+        opacity={0.5}
       />
 
-      {/* Direct - top vertex */}
       <circle
         cx={topX}
         cy={topY}
-        r={8}
+        r={7}
         fill={direct ? activeColor : inactiveColor}
-        style={{ filter: direct ? activeGlow : "none" }}
       />
       <text
         x={topX}
-        y={topY - 14}
+        y={topY - 12}
         textAnchor="middle"
-        fill={direct ? "#fca5a5" : "#666"}
+        fill={direct ? "#b91c1c" : "#a8a29e"}
         className="font-mono"
-        fontSize="10"
+        fontSize="9"
       >
         DIRECT
       </text>
 
-      {/* Cultural - bottom left */}
       <circle
         cx={bottomLeftX}
         cy={bottomLeftY}
-        r={8}
+        r={7}
         fill={cultural ? activeColor : inactiveColor}
-        style={{ filter: cultural ? activeGlow : "none" }}
       />
       <text
         x={bottomLeftX}
-        y={bottomLeftY + 18}
+        y={bottomLeftY + 16}
         textAnchor="middle"
-        fill={cultural ? "#fde68a" : "#666"}
+        fill={cultural ? "#b91c1c" : "#a8a29e"}
         className="font-mono"
-        fontSize="10"
+        fontSize="9"
       >
         CULTURAL
       </text>
 
-      {/* Structural - bottom right */}
       <circle
         cx={bottomRightX}
         cy={bottomRightY}
-        r={8}
+        r={7}
         fill={structural ? activeColor : inactiveColor}
-        style={{ filter: structural ? activeGlow : "none" }}
       />
       <text
         x={bottomRightX}
-        y={bottomRightY + 18}
+        y={bottomRightY + 16}
         textAnchor="middle"
-        fill={structural ? "#fed7aa" : "#666"}
+        fill={structural ? "#b91c1c" : "#a8a29e"}
         className="font-mono"
-        fontSize="10"
+        fontSize="9"
       >
         STRUCTURAL
       </text>

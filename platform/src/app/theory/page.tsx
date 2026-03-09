@@ -8,9 +8,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-12">
-      <h2 className="text-xl font-bold mb-4 text-accent">{title}</h2>
-      <div className="text-sm leading-relaxed text-foreground/80 space-y-3">
+    <section className="mb-14">
+      <h2 className="font-serif text-2xl font-bold mb-4 text-accent">
+        {title}
+      </h2>
+      <div className="text-[15px] leading-relaxed text-foreground/80 space-y-4">
         {children}
       </div>
     </section>
@@ -28,26 +30,27 @@ function ConceptCard({
 }) {
   return (
     <div className={`border-l-2 ${color} pl-4 py-2`}>
-      <h4 className="font-mono text-sm font-bold mb-1">{title}</h4>
-      <p className="text-xs text-muted leading-relaxed">{description}</p>
+      <h4 className="font-mono text-sm font-bold mb-1 text-foreground">
+        {title}
+      </h4>
+      <p className="text-sm text-muted leading-relaxed">{description}</p>
     </div>
   );
 }
 
 export default function TheoryPage() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-2xl mx-auto pb-12">
       <div className="mb-12">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">
+        <h1 className="font-serif text-4xl font-bold tracking-tight mb-3">
           Theoretical Framework
         </h1>
-        <p className="text-muted text-sm">
+        <p className="text-muted text-sm leading-relaxed">
           The Primal Race and the Architecture of Violence: From Galtung&apos;s
           Triangle to the Dissolution of Patriarchal Co-conspiracy
         </p>
       </div>
 
-      {/* Core Thesis */}
       <Section title="Core Thesis: Violence = Potential - Actual">
         <p>
           Based on Johan Galtung&apos;s &ldquo;Violence Triangle&rdquo;
@@ -67,10 +70,9 @@ export default function TheoryPage() {
         </p>
       </Section>
 
-      {/* Galtung's Triangle */}
-      <Section title="1. Galtung's Violence Triangle (Sexed Lens)">
+      <Section title="1. Galtung&rsquo;s Violence Triangle (Sexed Lens)">
         <div className="flex flex-col md:flex-row items-start gap-8 mb-6">
-          <div className="flex-shrink-0 bg-card border border-border rounded-lg p-6 flex flex-col items-center">
+          <div className="flex-shrink-0 bg-stone-50 border border-border rounded-xl p-6 flex flex-col items-center">
             <GaltungTriangle direct structural cultural size={200} />
           </div>
           <div className="space-y-4">
@@ -82,7 +84,7 @@ export default function TheoryPage() {
             <ConceptCard
               title="Structural Violence"
               description="Institutional/legal barriers — abortion bans, employment restrictions, pay gaps, educational denial, property rights denial. The water line."
-              color="border-orange-500"
+              color="border-amber-500"
             />
             <ConceptCard
               title="Cultural Violence"
@@ -98,7 +100,6 @@ export default function TheoryPage() {
         </p>
       </Section>
 
-      {/* Identity Violence */}
       <Section title="2. New Violence: Identity Violence">
         <p>
           Social gender (Gender) is social construct. Biological sex (Sex) is
@@ -112,16 +113,16 @@ export default function TheoryPage() {
           biological females of their only &ldquo;base&rdquo; in political
           struggle. You cannot perform chromosomes, menstrual pain, pregnancy, or
           menopausal bone loss. This dissolution is{" "}
-          <strong className="text-purple-400">
+          <strong className="text-purple-600">
             predatory or &ldquo;naive evil&rdquo;
           </strong>
           .
         </p>
-        <div className="bg-card border border-border rounded-lg p-4 mt-4">
-          <p className="text-xs font-mono text-muted uppercase tracking-widest mb-2">
+        <div className="bg-stone-50 border border-border rounded-xl p-5 mt-4">
+          <p className="text-[11px] font-mono text-muted uppercase tracking-widest mb-2">
             The Biological Wall
           </p>
-          <p className="text-sm">
+          <p className="text-sm text-foreground/80">
             Phenotypic biological traits are the only identity expression that
             cannot be changed. Technology cannot alter gamete production logic,
             neuroendocrine history, genetically-determined basal metabolic
@@ -132,25 +133,24 @@ export default function TheoryPage() {
         </div>
       </Section>
 
-      {/* Meta-Violence */}
       <Section title="3. Meta-Violence: Male-Centered Narratives">
         <p>
           Meta-violence is the{" "}
-          <strong className="text-cyan-400">violence above all violence</strong>
-          . Male-centered narratives monopolize interpretation and
-          meaning-making, controlling who gets to define reality. Under Primal
-          Race Theory, it establishes the original model:
+          <strong className="text-sky-600">violence above all violence</strong>.
+          Male-centered narratives monopolize interpretation and meaning-making,
+          controlling who gets to define reality. Under Primal Race Theory, it
+          establishes the original model:
         </p>
-        <div className="flex items-center gap-3 py-4 font-mono text-sm">
-          <span className="bg-red-900/30 text-red-400 px-3 py-1 rounded">
+        <div className="flex items-center gap-3 py-5 font-mono text-sm">
+          <span className="bg-red-50 text-red-700 px-3 py-1.5 rounded-full border border-red-200">
             Make Subject
           </span>
           <span className="text-muted">&rarr;</span>
-          <span className="bg-orange-900/30 text-orange-400 px-3 py-1 rounded">
+          <span className="bg-amber-50 text-amber-700 px-3 py-1.5 rounded-full border border-amber-200">
             Make Object
           </span>
           <span className="text-muted">&rarr;</span>
-          <span className="bg-yellow-900/30 text-yellow-400 px-3 py-1 rounded">
+          <span className="bg-yellow-50 text-yellow-700 px-3 py-1.5 rounded-full border border-yellow-200">
             Plunder Object
           </span>
         </div>
@@ -161,7 +161,6 @@ export default function TheoryPage() {
         </p>
       </Section>
 
-      {/* Co-conspirators */}
       <Section title="4. Co-conspirators Theory">
         <p>
           &ldquo;Micro-patriarchal regimes&rdquo; — any family, friendship, or
@@ -169,21 +168,21 @@ export default function TheoryPage() {
           key social anesthetics maintain their stability:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <div className="bg-card border border-border rounded-lg p-4">
+          <div className="bg-white border border-border rounded-xl p-5">
             <h4 className="font-mono text-sm font-bold mb-2 text-accent">
               Religion
             </h4>
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted leading-relaxed">
               Provides cosmic justification for hierarchical units. Frames
               submission as virtue, suffering as divine purpose, and deviation as
               sin.
             </p>
           </div>
-          <div className="bg-card border border-border rounded-lg p-4">
+          <div className="bg-white border border-border rounded-xl p-5">
             <h4 className="font-mono text-sm font-bold mb-2 text-accent">
               Romantic Love
             </h4>
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted leading-relaxed">
               Enchants the economic contract of family formation. Frames
               self-sacrifice as love, dependency as intimacy, and exit as
               failure.
@@ -199,8 +198,7 @@ export default function TheoryPage() {
         </p>
       </Section>
 
-      {/* Existential War */}
-      <Section title="5. Existential War & Expression">
+      <Section title="5. Existential War &amp; Expression">
         <p>
           All expression is political. People form races/tribes through
           expression. Races provide identity. Identity provides political
@@ -218,23 +216,22 @@ export default function TheoryPage() {
         </p>
       </Section>
 
-      {/* Solutions */}
       <Section title="6. Proposals">
         <div className="space-y-4">
-          <div className="border border-accent/30 rounded-lg p-4">
-            <h4 className="font-mono text-sm font-bold mb-2">
+          <div className="border border-accent/30 rounded-xl p-5 bg-accent-light">
+            <h4 className="font-mono text-sm font-bold mb-2 text-accent">
               Ultimate Vision: Biological Separatism
             </h4>
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted">
               Remove violence initiators through reproductive technology
               (IVG/parthenogenesis) to fundamentally restructure social units.
             </p>
           </div>
-          <div className="border border-border rounded-lg p-4">
-            <h4 className="font-mono text-sm font-bold mb-2">
+          <div className="border border-border rounded-xl p-5 bg-white">
+            <h4 className="font-mono text-sm font-bold mb-2 text-foreground">
               Realistic Path: Just Units
             </h4>
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted">
               Any Sex/Gender combination that inflicts zero violence internally
               or externally — that does not output the meta-violence of
               male-centered narratives — constitutes a non-patriarchal
