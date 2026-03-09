@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --card: #141414;
+  --card-hover: #1a1a1a;
+  --border: #262626;
+  --accent: #dc2626;
+  --accent-muted: #991b1b;
+  --muted: #737373;
+  --severity-low: #22c55e;
+  --severity-mid: #eab308;
+  --severity-high: #ef4444;
+  --severity-critical: #dc2626;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.galtung-triangle {
+  position: relative;
+  width: 200px;
+  height: 180px;
+}
+
+.galtung-triangle svg text {
+  font-size: 11px;
+  font-family: var(--font-mono), monospace;
+}

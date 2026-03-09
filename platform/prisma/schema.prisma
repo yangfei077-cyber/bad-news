@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Source {
+  id           String    @id @default(cuid())
+  name         String    @unique
+  url          String
+  language     String
+  category     String?
+  scrapeConfig String?
+  enabled      Boolean   @default(true)
+  lastScraped  DateTime?
+  createdAt    DateTime  @default(now())
+  articles     Article[]
+}
+
+model Article {
+  id          String    @id @default(cuid())
+  title       String
+  url         String    @unique
+  source      Source    @relation(fields: [sourceId], references: [id])
+  sourceId    String
+  language    String
+  content     String
+  excerpt     String?
+  author      String?
+  imageUrl    String?
+  publishedAt DateTime?
+  scrapedAt   DateTime  @default(now())
+  analysis    Analysis?
+
+  @@index([language])
+  @@index([publishedAt])
+  @@index([sourceId])
+}
+
+model Analysis {
+  id                    String   @id @default(cuid())
+  article               Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  articleId             String   @unique
+  violenceCategories    String
+  galtungDirect         Boolean  @default(false)
+  galtungStructural     Boolean  @default(false)
+  galtungCultural       Boolean  @default(false)
+  identityViolence      Boolean  @default(false)
+  metaViolence          Boolean  @default(false)
+  primalRaceAnalysis    String
+  coConspiracyAnalysis  String?
+  existentialWarFraming String?
+  severityScore         Int
+  summaryEn             String
+  summaryZh             String
+  modelVersion          String
+  analyzedAt            DateTime @default(now())
+
+  @@index([severityScore])
+  @@index([analyzedAt])
+}
