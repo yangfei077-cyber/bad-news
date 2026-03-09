@@ -1,5 +1,9 @@
 # BAD NEWS Platform
 
+
+Based on Essay: https://xj2vrrpw4b9pyznc.public.blob.vercel-storage.com/primal%20race.pdf
+
+
 A platform that scrapes gender violence news (EN/ZH), analyzes them through a fine-tuned GPT model embodying the **Primal Race Theory** and **Galtung's Violence Triangle** framework, and presents structured critical analysis on a Next.js web interface.
 
 ## Architecture
