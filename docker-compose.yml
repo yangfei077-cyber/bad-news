@@ -1,0 +1,31 @@
+services:
+  # For production use with PostgreSQL, uncomment:
+  # db:
+  #   image: postgres:16-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: badnews
+  #     POSTGRES_PASSWORD: badnews_dev
+  #     POSTGRES_DB: badnews
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+
+  # Development uses SQLite (no Docker needed for DB)
+  # Start the platform: cd platform && npm run dev
+  # Start the scraper:  cd scraper && python scheduler.py
+
+  platform:
+    build:
+      context: ./platform
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=file:./dev.db
+    volumes:
+      - ./platform/prisma/dev.db:/app/prisma/dev.db
+
+# volumes:
+#   pgdata:
