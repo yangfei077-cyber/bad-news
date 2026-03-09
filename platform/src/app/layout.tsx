@@ -86,16 +86,6 @@ export default function RootLayout({
           </div>
         </footer>
 
-        <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-border py-2 px-4 flex items-center justify-around sm:hidden z-50">
-          <Link href="/" className="flex flex-col items-center gap-0.5 text-muted hover:text-accent transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-            <span className="text-[10px] font-mono">Feed</span>
-          </Link>
-          <Link href="/theory" className="flex flex-col items-center gap-0.5 text-muted hover:text-accent transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span className="text-[10px] font-mono">Theory</span>
-          </Link>
-        </nav>
       </body>
     </html>
   );
