@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   title: "BAD NEWS",
   description:
     "Gender violence news analyzed through the Primal Race Theory and Galtung's Violence Triangle",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +35,8 @@ export default function RootLayout({
       >
         <header className="border-b border-border bg-white sticky top-0 z-50">
           <div className="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2.5">
+              <img src="/logo.png" alt="Bad News" className="w-8 h-8 rounded-lg" />
               <span className="text-accent font-serif font-extrabold text-2xl italic tracking-tight">
                 BAD NEWS
               </span>
